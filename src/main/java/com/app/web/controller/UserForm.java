@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class UserForm {
 
-	private String uid;
+	private String username;
 
 	private String email;
 
@@ -18,12 +18,12 @@ public class UserForm {
 
 	private Date dob;
 
-	public String getUid() {
-		return uid;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUid(String uid) {
-		this.uid = uid;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmail() {

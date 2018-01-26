@@ -2,17 +2,15 @@ package com.app.user.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "user_roles", uniqueConstraints = @UniqueConstraint(columnNames = { "role", "username" }))
+@Table(name = "role")
 public class UserRoleModel {
 
 	@Id
@@ -20,8 +18,8 @@ public class UserRoleModel {
 	@Column(name = "user_role_id", unique = true, nullable = false)
 	private Integer userRoleId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "uid", nullable = false)
+	@ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
 	private UserModel user;
 
 	@Column(name = "role", nullable = false, length = 45)

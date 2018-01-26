@@ -25,6 +25,7 @@ public class LoginController {
 
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
 	public String registration(Model model) {
+		System.out.println("Welcome");
 		model.addAttribute("userForm", new UserModel());
 
 		return "registration";
@@ -40,17 +41,17 @@ public class LoginController {
 		}
 
 		UserModel userModel = new UserModel();
-		userModel.setUserName(userForm.getUid());
+		userModel.setUsername(userForm.getUsername());
 		userModel.setFirstName(userForm.getFirstName());
 		userModel.setLastName(userForm.getLastName());
 		userModel.setDob(userForm.getDob());
 		
-		if(userModel.getUserName() != null)
-		userModel.setEmail(userModel.getUserName());
+		if(userModel.getUsername() != null)
+		userModel.setEmail(userModel.getUsername());
 		
 		userService.save(userModel);
 
-		securityService.autologin(userForm.getUid(), userForm.getPasswordConfirm());
+		securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
 
 		return "redirect:/welcome";
 	}
